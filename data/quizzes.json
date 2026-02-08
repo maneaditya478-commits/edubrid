@@ -1,0 +1,126 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is 2 + 3?",
+      "answer": "5",
+      "difficulty": "Easy",
+      "points": 5,
+      "domain": "math"
+    },
+    {
+      "id": 2,
+      "question": "How many sides does a triangle have?",
+      "answer": "3",
+      "difficulty": "Easy",
+      "points": 5,
+      "domain": "math"
+    },
+    {
+      "id": 3,
+      "question": "What is the capital of India?",
+      "answer": "New Delhi",
+      "difficulty": "Medium",
+      "points": 7,
+      "domain": "geography"
+    },
+    {
+      "id": 4,
+      "question": "What do plants need to make food?",
+      "answer": "Sunlight",
+      "difficulty": "Easy",
+      "points": 5,
+      "domain": "science"
+    },
+    {
+      "id": 5,
+      "question": "What is 10 - 4?",
+      "answer": "6",
+      "difficulty": "Easy",
+      "points": 5,
+      "domain": "math"
+    },
+    {
+      "id": 6,
+      "question": "What is the largest planet in our solar system?",
+      "answer": "Jupiter",
+      "difficulty": "Medium",
+      "points": 7,
+      "domain": "science"
+    },
+    {
+      "id": 7,
+      "question": "What is the opposite of 'hot'?",
+      "answer": "Cold",
+      "difficulty": "Easy",
+      "points": 5,
+      "domain": "english"
+    },
+    {
+      "id": 8,
+      "question": "How many days are in a week?",
+      "answer": "7",
+      "difficulty": "Easy",
+      "points": 5,
+      "domain": "general"
+    },
+    {
+      "id": 9,
+      "question": "What is 5 × 3?",
+      "answer": "15",
+      "difficulty": "Medium",
+      "points": 7,
+      "domain": "math"
+    },
+    {
+      "id": 10,
+      "question": "What is the chemical symbol for water?",
+      "answer": "H2O",
+      "difficulty": "Hard",
+      "points": 10,
+      "domain": "science"
+    },
+    {
+      "id": 11,
+      "question": "Who wrote the play 'Romeo and Juliet'?",
+      "answer": "William Shakespeare",
+      "difficulty": "Medium",
+      "points": 7,
+      "domain": "literature"
+    },
+    {
+      "id": 12,
+      "question": "Which gas do humans need to breathe?",
+      "answer": "Oxygen",
+      "difficulty": "Easy",
+      "points": 5,
+      "domain": "science"
+    },
+    {
+      "id": 13,
+      "question": "What is the freezing point of water in Celsius?",
+      "answer": "0",
+      "difficulty": "Medium",
+      "points": 7,
+      "domain": "science"
+    },
+    {
+      "id": 14,
+      "question": "Which continent is the Sahara Desert located on?",
+      "answer": "Africa",
+      "difficulty": "Medium",
+      "points": 7,
+      "domain": "geography"
+    },
+    {
+      "id": 15,
+      "question": "What is 9 squared?",
+      "answer": "81",
+      "difficulty": "Hard",
+      "points": 10,
+      "domain": "math"
+    }
+  ]
+}
+
+

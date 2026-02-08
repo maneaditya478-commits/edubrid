@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Study Room - EduBridge</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#764ba2">
+    <link rel="stylesheet" href="css/group-study.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <script src="js/language.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js" integrity="sha512-3v7c3lQOeRmRuwZQW36Hk2JkSB7zImYTEI47A6g7/lXKD4D4v2gnifx5tQTuioluCuHcHBY0QmCq/5zD0NS2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <h1 data-translate="common.logo">EduBridge</h1>
+            </div>
+            <nav class="nav">
+                <a href="home.html" class="nav-link" data-translate="common.home">Home</a>
+                <a href="quiz.html" class="nav-link" data-translate="common.quiz">Quiz</a>
+                <a href="notes.html" class="nav-link" data-translate="common.notes">Notes</a>
+                <a href="mentor.html" class="nav-link" data-translate="common.mentor">Mentor</a>
+                <a href="chat.html" class="nav-link">💬 Chat</a>
+                <a href="profile.html" class="nav-link" data-translate="common.profile">Profile</a>
+                <a href="group-study.html" class="nav-link active">Group Study</a>
+                <a href="contact.html" class="nav-link" data-translate="common.contact">Contact</a>
+                <button class="btn btn-ghost" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+                <button class="btn btn-outline" id="logoutBtn" data-translate="common.logout">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="group-header">
+                <div class="group-header-text">
+                    <h2>Group Study Rooms</h2>
+                    <p>Start or join a simple study room with your friends. This is a front-end demo – no real-time server yet.</p>
+                </div>
+            </section>
+
+            <section class="group-content">
+                <div class="group-left">
+                    <div class="card">
+                        <h3>Start a Room</h3>
+                        <div class="form-group">
+                            <label for="roomName">Room name</label>
+                            <input type="text" id="roomName" placeholder="e.g. Algebra Chapter 2">
+                        </div>
+                        <div class="form-group">
+                            <label for="roomSubject">Subject</label>
+                            <select id="roomSubject">
+                                <option value="Maths">Maths</option>
+                                <option value="Science">Science</option>
+                                <option value="English">English</option>
+                                <option value="History">History</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <button id="createRoomBtn" class="btn btn-primary">Create Room</button>
+
+                        <div id="currentRoomBox" class="current-room" style="display:none;">
+                            <h4>Current Room</h4>
+                            <p><strong>Name:</strong> <span id="currentRoomName"></span></p>
+                            <p><strong>Subject:</strong> <span id="currentRoomSubject"></span></p>
+                            <p><strong>Code:</strong> <span id="currentRoomCode"></span></p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Shared Notes</h3>
+                        <p class="small-text">Quick notes for your group. Saved only in this browser, but you can share them by link or QR.</p>
+                        <textarea id="notesArea" rows="6" placeholder="Write questions, formulas, or key points here..."></textarea>
+                        <div class="notes-actions-row">
+                            <button id="saveNotesBtn" class="btn btn-outline">Save Notes</button>
+                            <button id="shareNotesBtn" class="btn btn-primary">Share via Link / QR</button>
+                        </div>
+                        <div class="share-link-row">
+                            <input type="text" id="shareLink" placeholder="Click \"Share\" to generate a link" readonly>
+                            <button id="copyLinkBtn" class="btn btn-outline">Copy</button>
+                        </div>
+                        <div class="qr-wrapper">
+                            <canvas id="qrCanvas"></canvas>
+                        </div>
+                        <p class="small-text">Friends can open the link or scan the QR to load these notes on their device.</p>
+                    </div>
+                </div>
+
+                <div class="group-right">
+                    <div class="card">
+                        <div class="card-header-inline">
+                            <h3>Participants</h3>
+                            <span id="participantCount" class="badge">0</span>
+                        </div>
+                        <ul id="participantsList" class="participants-list">
+                            <!-- Filled by JS -->
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Study Chat (demo)</h3>
+                        <div id="chatBox" class="chat-box">
+                            <!-- Chat messages demo -->
+                        </div>
+                        <div class="chat-input-row">
+                            <input type="text" id="chatInput" placeholder="Type a message for your group...">
+                            <button id="sendChatBtn" class="btn btn-primary">Send</button>
+                        </div>
+                        <p class="small-text">Messages are temporary and only on this device.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/theme.js" defer></script>
+    <script src="js/group-study.js"></script>
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('Service Worker registered:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - EduBridge</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#764ba2">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <script src="js/language.js"></script>
+    <script src="js/theme.js" defer></script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="contact-container">
+        <div class="theme-toggle-bar">
+            <button class="btn btn-ghost" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
+        <div class="contact-card">
+            <div class="contact-header">
+                <div class="logo">
+                    <span class="logo-icon">🎓</span>
+                    <h1 data-translate="common.logo">EduBridge</h1>
+                </div>
+                <h2 data-translate="contact.title">Get in Touch</h2>
+                <p data-translate="contact.subtitle">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName" data-translate="contact.firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" data-translate="contact.firstName" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" data-translate="contact.lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" data-translate="contact.lastName" placeholder="Last Name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" data-translate="contact.email">Email</label>
+                    <input type="email" id="email" name="email" data-translate="contact.email" placeholder="your.email@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" data-translate="contact.phone">Phone Number (Optional)</label>
+                    <input type="tel" id="phone" name="phone" data-translate="contact.phone" placeholder="+91 9876543210">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject" data-translate="contact.subject">Subject</label>
+                    <select id="subject" name="subject" required>
+                        <option value="" data-translate="contact.selectSubject">Select Subject</option>
+                        <option value="general" data-translate="contact.general">General Inquiry</option>
+                        <option value="support" data-translate="contact.support">Technical Support</option>
+                        <option value="feedback" data-translate="contact.feedback">Feedback</option>
+                        <option value="partnership" data-translate="contact.partnership">Partnership</option>
+                        <option value="other" data-translate="contact.other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message" data-translate="contact.message">Message</label>
+                    <textarea id="message" name="message" rows="6" data-translate="contact.message" placeholder="Your message here..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full" data-translate="contact.sendMessage">Send Message</button>
+            </form>
+
+            <div class="contact-info">
+                <h3 data-translate="contact.contactInfo">Contact Information</h3>
+                <div class="info-item">
+                    <span class="info-icon">📧</span>
+                    <span data-translate="contact.emailInfo">support@edubridge.com</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">📱</span>
+                    <span data-translate="contact.phoneInfo">+91 1800-123-4567</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">📍</span>
+                    <span data-translate="contact.address">Pune, Maharashtra, India</span>
+                </div>
+            </div>
+
+            <div class="contact-footer">
+                <a href="index.html" class="back-link" data-translate="contact.backToHome">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/contact.js"></script>
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('Service Worker registered:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
+

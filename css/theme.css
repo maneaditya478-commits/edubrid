@@ -1,0 +1,183 @@
+/* Shared theme + toggle styles */
+.btn-ghost {
+    background: transparent;
+    color: #666;
+    border: 2px solid rgba(0, 0, 0, 0.05);
+    padding: 0.6rem 0.9rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-ghost:hover {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+}
+
+.theme-toggle-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.75rem;
+}
+
+.quiz-status {
+    margin-top: 0.75rem;
+    color: #666;
+    font-weight: 600;
+}
+
+/* Dark Theme */
+body.theme-dark {
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+.theme-dark .header,
+.theme-dark .footer {
+    background: #111827;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.theme-dark .logo h1 {
+    color: #c7d2fe;
+}
+
+.theme-dark .nav-link {
+    color: #cbd5e1;
+}
+
+.theme-dark .nav-link:hover,
+.theme-dark .nav-link.active {
+    color: #a5b4fc;
+    background: rgba(165, 180, 252, 0.12);
+}
+
+.theme-dark .btn-ghost {
+    color: #cbd5e1;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-dark .btn-ghost:hover {
+    background: rgba(165, 180, 252, 0.12);
+    color: #a5b4fc;
+}
+
+.theme-dark .btn-outline {
+    color: #cbd5e1;
+    border-color: #a5b4fc;
+}
+
+.theme-dark .btn-outline:hover,
+.theme-dark .btn-primary:hover {
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.45);
+}
+
+.theme-dark .btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.theme-dark .btn-secondary {
+    background: #334155;
+    color: #e2e8f0;
+    border-color: transparent;
+}
+
+.theme-dark .btn {
+    color: inherit;
+}
+
+.theme-dark .quiz-card,
+.theme-dark .results-card,
+.theme-dark .stat-card,
+.theme-dark .action-card,
+.theme-dark .feature-card,
+.theme-dark .request-card,
+.theme-dark .mentor-card,
+.theme-dark .profile-card,
+.theme-dark .content-card,
+.theme-dark .contact-card,
+.theme-dark .login-card,
+.theme-dark .register-card,
+.theme-dark .editor-card,
+.theme-dark .notes-list,
+.theme-dark .note-card,
+.theme-dark .shared-notes-list,
+.theme-dark .mentor-header,
+.theme-dark .mentor-request,
+.theme-dark .mentor-status,
+.theme-dark .available-mentors,
+.theme-dark .recent-activity,
+.theme-dark .welcome,
+.theme-dark .dashboard,
+.theme-dark .quick-actions {
+    background: #111827;
+    color: #e2e8f0;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.theme-dark .hero {
+    background: linear-gradient(135deg, #0f172a 0%, #111827 100%);
+    color: #e2e8f0;
+}
+
+.theme-dark .features {
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+.theme-dark .feature-card,
+.theme-dark .stat-card,
+.theme-dark .action-card,
+.theme-dark .mentor-card,
+.theme-dark .note-card,
+.theme-dark .profile-card,
+.theme-dark .content-card,
+.theme-dark .request-card,
+.theme-dark .editor-card,
+.theme-dark .results-card {
+    border: 1px solid #1f2937;
+}
+
+.theme-dark input,
+.theme-dark textarea,
+.theme-dark select {
+    background: #0f172a;
+    border: 2px solid #1f2937;
+    color: #e2e8f0;
+}
+
+.theme-dark input::placeholder,
+.theme-dark textarea::placeholder {
+    color: #94a3b8;
+}
+
+.theme-dark input:focus,
+.theme-dark textarea:focus,
+.theme-dark select:focus {
+    border-color: #a5b4fc;
+    outline: none;
+}
+
+.theme-dark .progress-bar {
+    background: #1f2937;
+}
+
+.theme-dark .result-label,
+.theme-dark .stat-label,
+.theme-dark .progress-text,
+.theme-dark .quiz-header p,
+.theme-dark .quiz-status,
+.theme-dark .footer,
+.theme-dark .hero p {
+    color: #cbd5e1;
+}
+
+.theme-dark .modal,
+.theme-dark .modal-content {
+    background: rgba(15, 23, 42, 0.9);
+    color: #e2e8f0;
+}
+
+

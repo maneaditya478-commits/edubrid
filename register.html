@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - EduBridge</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#764ba2">
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <script src="js/language.js"></script>
+    <script src="js/theme.js" defer></script>
+</head>
+<body>
+    <div class="register-container">
+        <div class="theme-toggle-bar">
+            <button class="btn btn-ghost" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
+        <div class="register-card">
+            <div class="register-header">
+                <div class="logo">
+                    <span class="logo-icon">🎓</span>
+                    <h1 data-translate="common.logo">EduBridge</h1>
+                </div>
+                <h2 data-translate="register.title">Join EduBridge</h2>
+                <p data-translate="register.subtitle">Start your personalized learning journey</p>
+            </div>
+
+            <form class="register-form" id="registerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName" data-translate="register.firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" data-translate="register.firstName" placeholder="First Name" required>
+                        <span class="error-message" id="firstNameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" data-translate="register.lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" data-translate="register.lastName" placeholder="Last Name" required>
+                        <span class="error-message" id="lastNameError"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" data-translate="register.email">Email</label>
+                    <input type="email" id="email" name="email" data-translate="register.email" placeholder="Email" required>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="username" data-translate="register.username">Username</label>
+                    <input type="text" id="username" name="username" data-translate="register.username" placeholder="Username" required>
+                    <span class="error-message" id="usernameError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox">
+                        <input type="checkbox" id="terms" name="terms" value="accepted" required>
+                        <span data-translate="register.terms">
+                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </span>
+                    </label>
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="grade" data-translate="register.grade">Grade/Class</label>
+                    <select id="grade" name="grade" required>
+                        <option value="" data-translate="register.selectGrade">Select Grade</option>
+                        <option value="1">Grade 1</option>
+                        <option value="2">Grade 2</option>
+                        <option value="3">Grade 3</option>
+                        <option value="4">Grade 4</option>
+                        <option value="5">Grade 5</option>
+                        <option value="6">Grade 6</option>
+                        <option value="7">Grade 7</option>
+                        <option value="8">Grade 8</option>
+                        <option value="9">Grade 9</option>
+                        <option value="10">Grade 10</option>
+                        <option value="11">Grade 11</option>
+                        <option value="12">Grade 12</option>
+                    </select>
+                    <span class="error-message" id="gradeError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="language" data-translate="register.language">Preferred Language</label>
+                    <select id="language" name="language" required>
+                        <option value="en">English</option>
+                        <option value="hi">हिन्दी (Hindi)</option>
+                        <option value="mr">मराठी (Marathi)</option>
+                    </select>
+                    <span class="error-message" id="languageError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" data-translate="register.password">Password</label>
+                    <input type="password" id="password" name="password" data-translate="register.password" placeholder="Password" required>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword" data-translate="register.confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" data-translate="register.confirmPassword" placeholder="Confirm Password" required>
+                    <span class="error-message" id="confirmPasswordError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox">
+                        <input type="checkbox" id="terms" required>
+                        <span data-translate="register.terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full" data-translate="register.createAccount">Create Account</button>
+            </form>
+
+            <div class="register-footer">
+                <p><span data-translate="register.hasAccount">Already have an account?</span> <a href="login.html" data-translate="register.signIn">Sign in</a></p>
+                <a href="index.html" class="back-link" data-translate="register.backToHome">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/register.js"></script>
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('Service Worker registered:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

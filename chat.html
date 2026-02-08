@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat Assistant - EduBridge</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#764ba2">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <script src="js/language.js"></script>
+    <script src="js/theme.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <h1 data-translate="common.logo">EduBridge</h1>
+            </div>
+            <nav class="nav">
+                <a href="home.html" class="nav-link" data-translate="common.home">Home</a>
+                <a href="quiz.html" class="nav-link" data-translate="common.quiz">Quiz</a>
+                <a href="notes.html" class="nav-link" data-translate="common.notes">Notes</a>
+                <a href="mentor.html" class="nav-link" data-translate="common.mentor">Mentor</a>
+                <a href="chat.html" class="nav-link active">💬 Chat</a>
+                <a href="profile.html" class="nav-link" data-translate="common.profile">Profile</a>
+                <button class="btn btn-ghost" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+                <button class="btn btn-outline" id="logoutBtn" data-translate="common.logout">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="chat-container">
+        <!-- Sidebar -->
+        <aside class="chat-sidebar" id="chatSidebar">
+            <div class="sidebar-header">
+                <button class="btn btn-primary" id="newChatBtn">
+                    <span>+</span> New Chat
+                </button>
+            </div>
+            <div class="chat-history" id="chatHistory">
+                <div class="history-item active" data-chat-id="default">
+                    <span class="history-icon">💬</span>
+                    <span class="history-title">New Chat</span>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <button class="btn btn-ghost" id="clearHistoryBtn">
+                    🗑️ Clear History
+                </button>
+                <div class="api-config-btn" id="apiConfigBtn">
+                    ⚙️ API Settings
+                </div>
+            </div>
+        </aside>
+
+        <!-- Chat Area -->
+        <div class="chat-main">
+            <div class="chat-messages" id="chatMessages">
+                <div class="welcome-message">
+                    <div class="welcome-icon">🤖</div>
+                    <h2>Welcome to EduBridge AI Assistant</h2>
+                    <p>I'm here to help you with your learning journey. Ask me anything about:</p>
+                    <ul>
+                        <li>📚 Course materials and concepts</li>
+                        <li>🧮 Math problems and solutions</li>
+                        <li>🔬 Science explanations</li>
+                        <li>📝 Study tips and techniques</li>
+                        <li>💡 General questions</li>
+                    </ul>
+                    <p class="suggestions-title">Try asking:</p>
+                    <div class="suggestion-chips">
+                        <button class="suggestion-chip" data-suggestion="Explain photosynthesis">Explain photosynthesis</button>
+                        <button class="suggestion-chip" data-suggestion="How do I solve quadratic equations?">How do I solve quadratic equations?</button>
+                        <button class="suggestion-chip" data-suggestion="What are good study habits?">What are good study habits?</button>
+                        <button class="suggestion-chip" data-suggestion="Help me understand fractions">Help me understand fractions</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="chatInput" 
+                        class="chat-input" 
+                        placeholder="Type your message here... (Press Shift+Enter for new line)"
+                        rows="1"
+                    ></textarea>
+                    <button class="send-btn" id="sendBtn" aria-label="Send message">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+                <div class="input-footer">
+                    <span class="input-hint">EduBridge AI can make mistakes. Check important info.</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- API Configuration Modal -->
+    <div class="modal" id="apiConfigModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>API Configuration</h3>
+                <button class="modal-close" id="closeApiModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>To use the AI chatbot, you need an OpenAI API key. Enter your key below:</p>
+                <div class="form-group">
+                    <label for="apiKeyInput">OpenAI API Key:</label>
+                    <input 
+                        type="password" 
+                        id="apiKeyInput" 
+                        placeholder="sk-..."
+                        autocomplete="off"
+                    >
+                    <small>Your API key is stored locally and never shared.</small>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="useFallbackCheckbox">
+                        Use fallback responses (no API required)
+                    </label>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn-primary" id="saveApiKeyBtn">Save</button>
+                    <button class="btn btn-outline" id="cancelApiBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/chat.js"></script>
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('Service Worker registered:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
+

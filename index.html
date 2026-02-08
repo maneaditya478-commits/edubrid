@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduBridge - Welcome</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#764ba2">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <script src="js/language.js"></script>
+    <script src="js/theme.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <h1 data-translate="common.logo">EduBridge</h1>
+            </div>
+            <nav class="nav">
+                <button class="btn btn-ghost" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+                <a href="group-study.html" class="btn btn-outline">Group Study</a>
+                <a href="login.html" class="btn btn-outline" data-translate="common.login">Login</a>
+                <a href="register.html" class="btn btn-primary" data-translate="common.register">Register</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+                <h2 data-translate="index.title">AI-Powered Personalized Learning for Rural Students</h2>
+                <p data-translate="index.subtitle">Adaptive learning, voice-based lessons, and mentorship support in your local language</p>
+                <div class="hero-actions">
+                    <a href="register.html" class="btn btn-primary btn-large" data-translate="index.getStarted">Get Started</a>
+                    <a href="login.html" class="btn btn-outline btn-large" data-translate="index.login">Login</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h3 data-translate="index.features">Key Features</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h4 data-translate="index.aiLearning">AI Learning Path</h4>
+                        <p data-translate="index.aiLearningDesc">Adapts lessons according to your pace and understanding</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎙️</div>
+                        <h4 data-translate="index.voiceLearning">Voice Learning</h4>
+                        <p data-translate="index.voiceLearningDesc">Learn with voice in Marathi, Hindi, or English</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h4 data-translate="index.offlineMode">Offline Mode</h4>
+                        <p data-translate="index.offlineModeDesc">Works without internet, syncs when available</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤝</div>
+                        <h4 data-translate="index.mentorship">Mentorship</h4>
+                        <p data-translate="index.mentorshipDesc">Connect with volunteer teachers and students</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎮</div>
+                        <h4 data-translate="index.gamifiedLearning">Gamified Learning</h4>
+                        <p data-translate="index.gamifiedLearningDesc">Earn points, badges, and compete with friends</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <h4 data-translate="index.smartNotes">Smart Notes</h4>
+                        <p data-translate="index.smartNotesDesc">Create, share, and collaborate on notes</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">☁️</div>
+                        <h4>Progress Sync & Cloud Notes</h4>
+                        <p>Keep your learning progress and notes safely backed up and ready to sync when online.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p data-translate="index.footer">&copy; 2024 EduBridge. Made for rural learners.</p>
+        </div>
+    </footer>
+
+    <script src="js/index.js"></script>
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('Service Worker registered:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

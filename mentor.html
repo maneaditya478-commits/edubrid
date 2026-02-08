@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorship - EduBridge</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#764ba2">
+    <link rel="stylesheet" href="css/mentor.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <script src="js/language.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <h1 data-translate="common.logo">EduBridge</h1>
+            </div>
+            <nav class="nav">
+                <a href="home.html" class="nav-link" data-translate="common.home">Home</a>
+                <a href="quiz.html" class="nav-link" data-translate="common.quiz">Quiz</a>
+                <a href="notes.html" class="nav-link" data-translate="common.notes">Notes</a>
+                <a href="mentor.html" class="nav-link active" data-translate="common.mentor">Mentor</a>
+                <a href="chat.html" class="nav-link">💬 Chat</a>
+                <a href="profile.html" class="nav-link" data-translate="common.profile">Profile</a>
+                <a href="contact.html" class="nav-link" data-translate="common.contact">Contact</a>
+                <button class="btn btn-ghost" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+                <button class="btn btn-outline" id="logoutBtn" data-translate="common.logout">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="mentor-header">
+                <h2>Find a Mentor</h2>
+                <p>Connect with volunteer teachers and university students for personalized guidance</p>
+            </section>
+
+            <section class="mentor-request">
+                <div class="request-card">
+                    <h3>Request Mentorship</h3>
+                    <form class="mentor-form" id="mentorForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentName">Your Name</label>
+                                <input type="text" id="studentName" name="studentName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="grade">Grade/Class</label>
+                                <select id="grade" name="grade" required>
+                                    <option value="">Select Grade</option>
+                                    <option value="1">Grade 1</option>
+                                    <option value="2">Grade 2</option>
+                                    <option value="3">Grade 3</option>
+                                    <option value="4">Grade 4</option>
+                                    <option value="5">Grade 5</option>
+                                    <option value="6">Grade 6</option>
+                                    <option value="7">Grade 7</option>
+                                    <option value="8">Grade 8</option>
+                                    <option value="9">Grade 9</option>
+                                    <option value="10">Grade 10</option>
+                                    <option value="11">Grade 11</option>
+                                    <option value="12">Grade 12</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select Subject</option>
+                                    <option value="math">Mathematics</option>
+                                    <option value="science">Science</option>
+                                    <option value="english">English</option>
+                                    <option value="hindi">Hindi</option>
+                                    <option value="marathi">Marathi</option>
+                                    <option value="social">Social Studies</option>
+                                    <option value="computer">Computer Science</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+91 9876543210">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">What help do you need?</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Describe the topics you need help with or questions you have..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferredTime">Preferred Time</label>
+                            <select id="preferredTime" name="preferredTime">
+                                <option value="">Any time</option>
+                                <option value="morning">Morning (6 AM - 12 PM)</option>
+                                <option value="afternoon">Afternoon (12 PM - 6 PM)</option>
+                                <option value="evening">Evening (6 PM - 10 PM)</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">Submit Request</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="mentor-status">
+                <h3>Your Mentorship Requests</h3>
+                <div class="requests-list" id="requestsList">
+                    <!-- Requests will be dynamically loaded here -->
+                </div>
+            </section>
+
+            <section class="mentor-availability">
+                <div class="availability-header">
+                    <div>
+                        <h3>Mentor Availability Calendar</h3>
+                        <p>Pick a mentor and a slot to attach to your request.</p>
+                    </div>
+                    <div class="availability-controls">
+                        <label for="mentorSelect">Mentor</label>
+                        <select id="mentorSelect"></select>
+                        <button class="btn btn-secondary" id="refreshSlotsBtn">Refresh Slots</button>
+                    </div>
+                </div>
+                <div class="availability-grid" id="availabilityGrid">
+                    <!-- Slots rendered by JS -->
+                </div>
+                <div class="selected-slot" id="selectedSlot">No slot selected yet.</div>
+                <button class="btn btn-primary" id="bookSlotBtn">Attach Slot to Request</button>
+            </section>
+
+            <section class="available-mentors">
+                <h3>Available Mentors</h3>
+                <div class="mentors-grid" id="mentorsGrid">
+                    <div class="mentor-card">
+                        <div class="mentor-avatar">👨‍🏫</div>
+                        <h4>Dr. Rajesh Kumar</h4>
+                        <p class="mentor-subject">Mathematics</p>
+                        <p class="mentor-experience">5+ years experience</p>
+                        <div class="mentor-rating">⭐⭐⭐⭐⭐</div>
+                        <button class="btn btn-primary">Request Help</button>
+                    </div>
+                    <div class="mentor-card">
+                        <div class="mentor-avatar">👩‍🔬</div>
+                        <h4>Priya Sharma</h4>
+                        <p class="mentor-subject">Science</p>
+                        <p class="mentor-experience">3+ years experience</p>
+                        <div class="mentor-rating">⭐⭐⭐⭐⭐</div>
+                        <button class="btn btn-primary">Request Help</button>
+                    </div>
+                    <div class="mentor-card">
+                        <div class="mentor-avatar">👨‍💻</div>
+                        <h4>Amit Patel</h4>
+                        <p class="mentor-subject">Computer Science</p>
+                        <p class="mentor-experience">2+ years experience</p>
+                        <div class="mentor-rating">⭐⭐⭐⭐</div>
+                        <button class="btn btn-primary">Request Help</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/theme.js" defer></script>
+    <script src="js/mentor.js"></script>
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('Service Worker registered:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

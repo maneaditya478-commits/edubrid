@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - EduBridge</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#764ba2">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <script src="js/language.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <h1 data-translate="common.logo">EduBridge</h1>
+            </div>
+            <nav class="nav">
+                <a href="home.html" class="nav-link" data-translate="common.home">Home</a>
+                <a href="quiz.html" class="nav-link active" data-translate="common.quiz">Quiz</a>
+                <a href="notes.html" class="nav-link" data-translate="common.notes">Notes</a>
+                <a href="mentor.html" class="nav-link" data-translate="common.mentor">Mentor</a>
+                <a href="chat.html" class="nav-link">💬 Chat</a>
+                <a href="profile.html" class="nav-link" data-translate="common.profile">Profile</a>
+                <a href="contact.html" class="nav-link" data-translate="common.contact">Contact</a>
+                <button class="btn btn-ghost" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+                <button class="btn btn-outline" id="logoutBtn" data-translate="common.logout">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="quiz-header">
+                <h2>Adaptive Quiz</h2>
+                <p>Test your knowledge and level up!</p>
+                <div class="quiz-stats">
+                    <div class="stat">
+                        <span class="stat-label">Level:</span>
+                        <span class="stat-value" id="currentLevel">1</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Points:</span>
+                        <span class="stat-value" id="totalPoints">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Streak:</span>
+                        <span class="stat-value" id="streak">0</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="quiz-content" id="quizContent">
+                <div class="quiz-card" id="quizCard">
+                    <div class="question-section">
+                        <h3 id="questionText">Ready to start?</h3>
+                        <div class="question-meta">
+                            <span class="difficulty" id="questionDifficulty">Easy</span>
+                            <span class="points" id="questionPoints">+5 points</span>
+                        </div>
+                    </div>
+
+                    <div class="answer-section">
+                        <div class="answer-input">
+                            <input type="text" id="answerInput" placeholder="Type your answer here...">
+                        </div>
+                        <div class="answer-actions">
+                            <button class="btn btn-secondary" id="voiceAnswerBtn">🎙️ Voice Answer</button>
+                            <button class="btn btn-primary" id="submitBtn">Submit</button>
+                        </div>
+                    </div>
+
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span class="progress-text" id="progressText">0/10</span>
+                    </div>
+                </div>
+
+                <div class="quiz-actions">
+                    <button class="btn btn-primary btn-large" id="startQuizBtn" disabled>Start Quiz</button>
+                    <button class="btn btn-secondary btn-large" id="voiceCoachBtn">🎧 Voice Coach</button>
+                    <button class="btn btn-outline" id="skipBtn" style="display: none;">Skip Question</button>
+                    <p class="quiz-status" id="quizStatus">Loading questions...</p>
+                    <p class="quiz-voice-hint" id="quizVoiceHint">Say “start quiz”, “repeat question”, “skip question”, or “answer is ...” to control hands‑free.</p>
+                </div>
+            </section>
+
+            <section class="quiz-results" id="quizResults" style="display: none;">
+                <div class="results-card">
+                    <h3>Quiz Complete!</h3>
+                    <div class="results-stats">
+                        <div class="result-stat">
+                            <span class="result-value" id="finalScore">0</span>
+                            <span class="result-label">Score</span>
+                        </div>
+                        <div class="result-stat">
+                            <span class="result-value" id="correctAnswers">0</span>
+                            <span class="result-label">Correct</span>
+                        </div>
+                        <div class="result-stat">
+                            <span class="result-value" id="pointsEarned">0</span>
+                            <span class="result-label">Points Earned</span>
+                        </div>
+                    </div>
+                    <div class="results-actions">
+                        <button class="btn btn-primary" id="retakeBtn">Take Another Quiz</button>
+                        <a href="home.html" class="btn btn-outline">Back to Home</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/theme.js" defer></script>
+    <script src="js/quiz.js"></script>
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('Service Worker registered:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
